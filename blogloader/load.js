@@ -88,7 +88,7 @@ function createClient(serviceType) {
          */
         return new NoSQLClient({
             serviceType: ServiceType.KVSTORE,
-            endpoint: 'localhost:80'
+            endpoint: 'localhost:8080'
         });
     default:
         throw new Error('Unknown service type: ' + serviceType);
@@ -102,8 +102,21 @@ async function run(client) {
 
 
 try {
+  const createDDL = `CREATE TABLE IF NOT EXISTS blogtable \
+     (id INTEGER GENERATED ALWAYS AS IDENTITY (START WITH 1 INCREMENT BY 1 NO CYCLE), blog STRING, PRIMARY KEY (id))`;
+  console.log('Create table ' + TABLE_NAME);
+  let resTab = await client.tableDDL(createDDL, {
+      tableLimits: {
+          readUnits: 20,
+          writeUnits: 20,
+          storageGB: 1
+      }
+  });
+  await client.forCompletion(resTab);
+  console.log('  Creating table %s', resTab.tableName);
+  console.log('  Table state: %s', resTab.tableState.name);
+	
   let res =null;
-   
   var i;
   for (i = 0; i < 10000; i++) {
     res = await client.put(TABLE_NAME, {
