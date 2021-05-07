@@ -5,9 +5,3 @@ INCREMENT BY 1
 NO CYCLE),
 blog STRING,
 PRIMARY KEY (id))
-
-CREATE TABLE IF NOT EXISTS blogtable (
-id integer,
-blog STRING,
-PRIMARY KEY (id))
-
