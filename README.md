@@ -1,9 +1,12 @@
 # demo-graphql-nosql
 
 Deployment
+1. Clone this repository
+2. Copy your API Keys to graphql_nosql repository (NoSQLprivateKey.pem) and modify the credentials in the code
+3. Run
 
 ````
-cd ~/demonosql/graphql_nosql/
+cd ~/demo-graphql-nosql/graphql_nosql/
 npm start
 ````
 
