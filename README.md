@@ -7,6 +7,7 @@ Deployment
 
 ````
 cd ~/demo-graphql-nosql/graphql_nosql/
+npm install
 npm start
 ````
 
