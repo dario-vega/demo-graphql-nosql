@@ -39,7 +39,7 @@ process
 //
 
 async function getAllBlogsHelper() {
-  let statement = `SELECT * FROM ${TABLE_NAME} LIMIT 10`;
+  let statement = `SELECT * FROM ${TABLE_NAME} LIMIT 100`;
   const rows = [];
   let cnt ;
   let res;
@@ -172,7 +172,7 @@ function createClient() {
                     tenantId: 'ocid1.tenancy.oc1..aaaaaaaahrs4avamaxiscouyeoirc7hz5byvumwyvjedslpsdb2d2xe2kp2q',
                     userId: 'ocid1.user.oc1..aaaaaaaaqeq7zdo54v524lk5k2cxbnrowyp7p5f36r2s5co3ssybmexcu4ba',
                     fingerprint: 'e1:4f:7f:e7:b5:7c:11:38:ed:e5:9f:6d:92:bb:ae:3d',
-                    privateKeyFile: 'DVprivateKey.pem'
+                    privateKeyFile: 'NoSQLprivateKey.pem'
                 }
             }
         });
