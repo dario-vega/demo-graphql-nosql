@@ -12,7 +12,10 @@ async function quickstart() {
     let client;
     try {
         const args = process.argv;
-        let serviceType = 'cloud';
+        let serviceType = args[2];
+        if (!serviceType) {
+            return console.error(USAGE);
+        }
         // Set up access to the cloud service
         client = createClient(serviceType);
         console.log('Created NoSQLClient instance');
@@ -35,9 +38,20 @@ async function quickstart() {
  */
 function createClient(serviceType) {
 
+    switch(serviceType) {
+    case 'cloud':
         return new NoSQLClient({
+            /*
+             * EDIT:
+             * 1. use desired region id
+             * 2. your tenancy's OCID, user's OCID
+             * 3. privateKeyFile path
+             * 4. fingerprint for uploaded public key
+             * 5. optional passphrase. If your key has none, delete this
+             * line (and the leading ',').
+             */
             region: Region.EU_FRANKFURT_1,
-			compartment:'ocid1.compartment.oc1..aaaaaaaamgvdxnuap56pu2qqxrcg7qnvb4wxenqguylymndvey3hsyi57paa',
+                        compartment:'ocid1.compartment.oc1..aaaaaaaamgvdxnuap56pu2qqxrcg7qnvb4wxenqguylymndvey3hsyi57paa',
             auth: {
                 iam: {
                     tenantId: 'ocid1.tenancy.oc1..aaaaaaaahrs4avamaxiscouyeoirc7hz5byvumwyvjedslpsdb2d2xe2kp2q',
@@ -47,6 +61,27 @@ function createClient(serviceType) {
                 }
             }
         });
+    case 'cloudsim':
+        /*
+         * EDIT: if the endpoint does not reflect how the Cloud
+         * Simulator has been started, modify it accordingly.
+         */
+        return new NoSQLClient({
+            serviceType: ServiceType.CLOUDSIM,
+            endpoint: 'localhost:8080'
+        });
+    case 'kvstore':
+        /*
+         * EDIT: if the endpoint does not reflect how the Proxy
+         * Server has been started, modify it accordingly.
+         */
+        return new NoSQLClient({
+            serviceType: ServiceType.KVSTORE,
+            endpoint: 'localhost:80'
+        });
+    default:
+        throw new Error('Unknown service type: ' + serviceType);
+    }
 }
 
 /*
