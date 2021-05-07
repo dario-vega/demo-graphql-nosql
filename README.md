@@ -6,6 +6,12 @@
 3. Run
 
 ````
+cd ~/demo-graphql-nosql/blogloader/
+ls -lrt NoSQLprivateKey.pem
+npm install
+node load.js cloud
+node read.js cloud
+
 cd ~/demo-graphql-nosql/graphql_nosql/
 ls -lrt NoSQLprivateKey.pem
 npm install
