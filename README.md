@@ -2,7 +2,7 @@
 
 ## Deployment
 1. Clone this repository
-2. Copy your API Keys to graphql_nosql repository (NoSQLprivateKey.pem) and modify the credentials in the code 
+2. Copy your API Keys to graphql_nosql repository (NoSQLprivateKey.pem) and modify the credentials in the code (for demo purpose, use profiles for production)
 3. Run
 
 ````
