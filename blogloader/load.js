@@ -3,7 +3,7 @@
  * To run:
  *  1. Edit for your target environment and credentials
  *  2. Run it:
- *       node quickstart.js cloud|cloudsim|kvstore
+ *       node load.js cloud|cloudsim|kvstore
  *
  *  Use 'cloud' for the Oracle NoSQL Database Cloud Service
  *  Use 'cloudsim' for the Oracle NoSQL Cloud Simulator
