@@ -3,21 +3,18 @@
 ## Deployment
 1. Clone this repository
 2. Copy your API Keys to graphql_nosql repository (NoSQLprivateKey.pem) and modify the credentials in the code (for demo purpose, use profiles for production)
-3. Run
+3. Run using Instance Principals when deploying in OCI
 
 ````
-# (To avoid this, Modify to use Instance principal when deploying in OCI )
-cp ~/.oci/MYprivateKey.pem ~/demo-graphql-nosql/blogloader/NoSQLprivateKey.pem
-cp ~/.oci/MYprivateKey.pem ~/demo-graphql-nosql/graphql_nosql/NoSQLprivateKey.pem
+export NOSQL_REGION='US_ASHBURN_1'
+export NOSQL_COMPID='ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 cd ~/demo-graphql-nosql/blogloader/
-ls -lrt NoSQLprivateKey.pem
 npm install
 node load.js cloud
 node read.js cloud
 
 cd ~/demo-graphql-nosql/graphql_nosql/
-ls -lrt NoSQLprivateKey.pem
 npm install
 npm start
 ````
