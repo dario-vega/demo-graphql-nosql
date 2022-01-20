@@ -157,7 +157,7 @@ async function ws() {
 
 // Do it
 let client;
-let statement;
+let preparedStmt;
 async function run() {
   client = createClient();
   statement = `DECLARE $v_blog STRING; $v_id INTEGER; UPDATE ${TABLE_NAME} SET blog = $v_blog WHERE id=$v_id`;
