@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "description": "Basic demo of GraphQL with Oracle NoSQL",
   "private":"true",
-  "main": "graphql_oracle_nosql.js",
+  "main": "graphql-oracle-nosql.js",
   "scripts": {
-    "start": "node graphql_oracle_nosql.js"
+    "start": "node graphql-oracle-nosql.js"
   },
   "keywords": [],
   "author": " ",
