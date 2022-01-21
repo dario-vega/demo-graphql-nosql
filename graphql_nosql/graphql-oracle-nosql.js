@@ -74,6 +74,7 @@ async function updateBlogHelper(id, input) {
     $v_blog : input.blog
   };
   console.log(preparedStmt)
+  console.log(globalPreparedStmt)
   res = await client.query(preparedStmt);
   let updBlog = {id : id , blog: input.blog};
   return updBlog;
