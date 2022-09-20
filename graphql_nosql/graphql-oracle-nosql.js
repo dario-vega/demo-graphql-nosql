@@ -65,15 +65,16 @@ async function createBlogHelper(input) {
 }
 
 async function updateBlogHelper(id, input) {
-  // Because we are using GENERATED ALWAYS AS IDENTITY I am using UPDATE command 
+  // Because we are using GENERATED ALWAYS AS IDENTITY I am using UPDATE command
   // We can use the command putIfPresent in other cases - see updateBlogHelperWithoutSeq
   //  https://docs.oracle.com/en/database/other-databases/nosql-database/19.5/java-driver-table/inserting-identity-values-programmatically.html
-  statement = `DECLARE $v_blog STRING; $v_id INTEGER; UPDATE ${TABLE_NAME} SET blog = $v_blog WHERE id=$v_id`;
-  const preparedStmt = await client.prepare(statement);
+  const preparedStmt = Object.assign({ __proto__: globalPreparedStmt.__proto__ }, globalPreparedStmt);
   preparedStmt.bindings = {
     $v_id: id,
     $v_blog : input.blog
   };
+  console.log(preparedStmt)
+  console.log(globalPreparedStmt)
   res = await client.query(preparedStmt);
   let updBlog = {id : id , blog: input.blog};
   return updBlog;
@@ -158,8 +159,11 @@ async function ws() {
 
 // Do it
 let client;
+let globalPreparedStmt;
 async function run() {
   client = createClient();
+  statement = `DECLARE $v_blog STRING; $v_id INTEGER; UPDATE ${TABLE_NAME} SET blog = $v_blog WHERE id=$v_id`;
+  globalPreparedStmt = await client.prepare(statement);	
   await ws();
 }
 
