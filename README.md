@@ -2,8 +2,7 @@
 
 ## Deployment
 1. Clone this repository
-2. Copy your API Keys to graphql_nosql repository (NoSQLprivateKey.pem) and modify the credentials in the code (for demo purpose, use profiles for production)
-3. Run using Instance Principals when deploying in OCI
+2. Run using Instance Principals when deploying in OCI
 
 ````
 export NOSQL_REGION='US_ASHBURN_1'
