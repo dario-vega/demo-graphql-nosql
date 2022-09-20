@@ -6,7 +6,7 @@ const ServiceType = require('oracle-nosqldb').ServiceType;
 
 // Target table used by this example
 const TABLE_NAME = 'blogtable';
-const USAGE = 'Usage: node quickstart.js cloud|cloudsim|kvstore';
+const USAGE = 'Usage: node read.js cloud|cloudsim|kvstore';
 
 async function quickstart() {
     let client;
