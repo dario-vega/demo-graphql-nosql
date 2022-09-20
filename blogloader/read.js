@@ -41,24 +41,12 @@ function createClient(serviceType) {
     switch(serviceType) {
     case 'cloud':
         return new NoSQLClient({
-            /*
-             * EDIT:
-             * 1. use desired region id
-             * 2. your tenancy's OCID, user's OCID
-             * 3. privateKeyFile path
-             * 4. fingerprint for uploaded public key
-             * 5. optional passphrase. If your key has none, delete this
-             * line (and the leading ',').
-             */
-            region: Region.EU_FRANKFURT_1,
-                        compartment:'ocid1.compartment.oc1..aaaaaaaamgvdxnuap56pu2qqxrcg7qnvb4wxenqguylymndvey3hsyi57paa',
+            region: process.env.NOSQL_REGION ,
+            compartment:process.env.NOSQL_COMPID,
             auth: {
-                iam: {
-                    tenantId: 'ocid1.tenancy.oc1..aaaaaaaahrs4avamaxiscouyeoirc7hz5byvumwyvjedslpsdb2d2xe2kp2q',
-                    userId: 'ocid1.user.oc1..aaaaaaaaqeq7zdo54v524lk5k2cxbnrowyp7p5f36r2s5co3ssybmexcu4ba',
-                    fingerprint: 'e1:4f:7f:e7:b5:7c:11:38:ed:e5:9f:6d:92:bb:ae:3d',
-                    privateKeyFile: 'NoSQLprivateKey.pem'
-                }
+              iam: {
+                  useInstancePrincipal: true
+              }
             }
         });
     case 'cloudsim':
