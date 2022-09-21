@@ -1,14 +1,8 @@
-/*
- *
- * To run:
- *  1. Edit for your target environment and credentials
- *  2. Run it:
- *       node load.js cloud|cloudsim|kvstore
- *
- *  Use 'cloud' for the Oracle NoSQL Database Cloud Service
- *  Use 'cloudsim' for the Oracle NoSQL Cloud Simulator
- *  Use 'kvstore' for the Oracle NoSQL Database on-premise
- */
+// 
+// Copyright (c) 2022 Oracle, Inc.  All rights reserved.
+// Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl.
+// 
+
 'use strict';
 
 const NoSQLClient = require('oracle-nosqldb').NoSQLClient;

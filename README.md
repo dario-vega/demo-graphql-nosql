@@ -1,10 +1,12 @@
 # demo-graphql-nosql
 
-## Deployment
+## Create table and load data
+
 1. Clone this repository
+
 2. Run using Instance Principals when deploying in OCI
 
-````
+````shell
 export NOSQL_REGION='US_ASHBURN_1'
 export NOSQL_COMPID='ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
@@ -12,6 +14,16 @@ cd ~/demo-graphql-nosql/blogloader/
 npm install
 node load.js cloud
 node read.js cloud
+````
+
+## Deployment
+
+1. Clone this repository
+2. Run using Instance Principals when deploying in OCI
+
+````shell
+export NOSQL_REGION='US_ASHBURN_1'
+export NOSQL_COMPID='ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx'
 
 cd ~/demo-graphql-nosql/graphql_nosql/
 npm install
@@ -22,7 +34,7 @@ npm start
 
 ````
 docker build -t graphql_nosql .
-docker run -p 3000:3000  graphql_nosql 
+docker run  --env NOSQL_ENDPOINT=US_ASHBURN_1 --env NOSQL_COMPID=ocid1.compartment.oc1..xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  -p 3000:3000  graphql_nosql 
 ````
 
 ## TEST

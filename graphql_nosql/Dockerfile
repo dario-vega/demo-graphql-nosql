@@ -1,4 +1,9 @@
-FROM node:12-slim
+# Copyright (c) 2022 Oracle and/or its affiliates.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl/
+#
+
+FROM node:16-slim
+
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -8,6 +13,9 @@ WORKDIR /usr/src/app
 # where available (npm@5+)
 COPY package*.json ./
 
+# ENV NOSQL_REGION
+# ENV NOSQL_COMPID
+
 RUN npm install
 # If you are building your code for production
 # RUN npm ci --only=production
@@ -15,4 +23,4 @@ RUN npm install
 # Bundle app source
 COPY . .
 EXPOSE 3000
-CMD [ "node", "graphql_oracle_nosql.js" ]
+CMD [ "node", "graphql-oracle-nosql.js" ]

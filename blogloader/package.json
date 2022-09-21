@@ -11,6 +11,6 @@
   "author": "dario.vega@oracle.com",
   "license": "MIT",
   "dependencies": {
-    "oracle-nosqldb": "^5.2"
+    "oracle-nosqldb": ">=5.2"
   }
 }
