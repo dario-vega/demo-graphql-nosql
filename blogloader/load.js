@@ -71,8 +71,8 @@ function createClient(serviceType) {
          */
         return new NoSQLClient({
             serviceType: ServiceType.KVSTORE,
-            endpoint: 'localhost:8080'
-        });
+            endpoint: process.env.NOSQL_ENDPOINT + ":" + process.env.NOSQL_PORT
+	});
     default:
         throw new Error('Unknown service type: ' + serviceType);
     }
